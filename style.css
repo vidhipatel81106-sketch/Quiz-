@@ -1,0 +1,197 @@
+:root {
+    --navy: #0b1f44;
+    --navy-mid: #153a7a;
+    --royal: #1e4d9c;
+    --sky: #e8f0fb;
+    --white: #ffffff;
+    --gold: #c9a227;
+    --gold-light: #e8c547;
+    --gold-deep: #9a7b1a;
+    --text: #12233f;
+    --muted: #5a6b86;
+    --shadow: 0 18px 40px rgba(11, 31, 68, 0.22);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 2rem 1.25rem 3rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top right, rgba(232, 197, 71, 0.18), transparent 32%),
+        linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 48%, #0e2a5c 100%);
+}
+
+h1,
+h2,
+.heading,
+header h1 {
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+h1::after,
+.heading::after,
+header h1::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 3px;
+    margin: 0.7rem auto 0;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+#question {
+    width: min(640px, 100%);
+    margin: 0;
+    padding: 1.6rem 1.75rem;
+    background: var(--white);
+    color: var(--navy);
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    font-weight: 600;
+    line-height: 1.45;
+    text-align: center;
+    border-radius: 18px 18px 8px 8px;
+    border: 1px solid rgba(201, 162, 39, 0.35);
+    border-top: 6px solid var(--gold);
+    box-shadow: var(--shadow);
+}
+
+#options {
+    width: min(640px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.15rem 1.15rem 1.3rem;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 8px 8px 18px 18px;
+    box-shadow: var(--shadow);
+}
+
+#options:empty {
+    display: none;
+}
+
+#options button,
+button {
+    appearance: none;
+    width: 100%;
+    margin: 0;
+    padding: 0.95rem 1.1rem;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: var(--navy);
+    background: var(--sky);
+    border: 1.5px solid transparent;
+    border-left: 4px solid var(--royal);
+    border-radius: 12px;
+    box-shadow: 0 4px 0 rgba(21, 58, 122, 0.08);
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+#options button:hover,
+button:hover {
+    transform: translateY(-2px);
+    color: var(--white);
+    background: linear-gradient(135deg, var(--royal), var(--navy-mid));
+    border-color: var(--gold-light);
+    border-left-color: var(--gold);
+    box-shadow: 0 10px 18px rgba(21, 58, 122, 0.28);
+}
+
+#options button:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+#options button:active,
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+#result {
+    width: min(640px, 100%);
+    margin: 0;
+    padding: 1.35rem 1.5rem;
+    text-align: center;
+    font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--navy);
+    background: linear-gradient(180deg, #fffdf4 0%, #fff8e1 100%);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    box-shadow:
+        0 0 0 6px rgba(201, 162, 39, 0.12),
+        var(--shadow);
+}
+
+#result:empty {
+    display: none;
+}
+
+#result::before {
+    content: "Final score";
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1.5rem 0.9rem 2.25rem;
+        justify-content: flex-start;
+    }
+
+    #options button,
+    button {
+        text-align: center;
+        padding: 0.9rem 0.85rem;
+    }
+}
+
+@media (min-width: 900px) {
+    #question,
+    #options,
+    #result {
+        width: min(720px, 100%);
+    }
+}
